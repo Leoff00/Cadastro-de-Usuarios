@@ -1,0 +1,29 @@
+<div class="jumbotron jumbotron-fluid mt-4">
+    <div class="container">
+        <h1 class="display-4">Bem vindo a lista de controle de nome e sobrenome</h1>
+        <p class="lead pt-3">Deixe seu feedback, diga o que voce achou desta aplicação CRUD.</p>
+    </div>
+</div>
+<hr>
+
+<a href="/admin/categorias/add" <button type="button" class="btn btn-info ml-4 pt-2">Novo cadastro</button></a>
+
+
+{{#each categorias}}
+<div class="card mt-4">
+    <div class="card-body">
+        <h4>Nome: {{nome}}</h4>
+        <h4>Sobrenome: {{sobrenome}}</h4>
+        <h5>Feedback: "{{feedback}}"</h5>
+        <small>Data de criação: {{data}}</small>
+        <br>
+        <a href="/admin/categorias/edit/{{_id}}" <button class="btn btn-info ml-4 mt-2">Editar cadastro</button></a>
+        <form action="/admin/categorias/del" method="POST">
+            <input type="hidden" name="id" value="{{_id}}">
+            <button type="submit" class="btn btn-danger ml-4 mt-2">Excluir cadastro</button>
+        </form>
+
+    </div>
+</div>
+{{else}}
+<h3 class="mt-4">Você vai ser a primeira se cadastrar, linda e gostosa <3</h3> {{/each}}

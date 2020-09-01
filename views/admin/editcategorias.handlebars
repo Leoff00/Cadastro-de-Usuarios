@@ -1,0 +1,33 @@
+{{#each erros}}
+<div class="alert alert-danger mt-4">{{text}}</div>
+
+{{else}}
+
+{{/each}}
+
+<div class="card m-3">
+    <div class="card-body">
+        <form action="/admin/categorias/edit" method="POST">
+            <div class="d-inline-flex p-2 bd-highlight">
+                <h2 class="">BEM VINDO A ABA DE EDIÇÃO DE CADASTRO DE USUARIOS</h2>
+            </div>
+
+            <div class="form-row mt-4">
+                <div class="col">
+                    <input type="hidden" name="id" value="{{categoria._id}}">
+                    <input type="text" name="nome" class="form-control" placeholder="Nome..."
+                        value="{{categoria.nome}}">
+                </div>
+                <div class="col">
+                    <input type="text" name="sobrenome" class="form-control" placeholder="Sobrenome..."
+                        value="{{categoria.sobrenome}}">
+                </div>
+            </div>
+
+            <textarea class="align-content-xl-center" placeholder="Diga sua opiniao aqui" name="feedback"></textarea>
+            <button type="submit" class="btn btn-success mt-3">Editar dados</button>
+            <a href="/admin/categorias" <button type="button" class="btn btn-info mt-3">Voltar a area de
+                cadastro</button></a>
+        </form>
+    </div>
+</div>
