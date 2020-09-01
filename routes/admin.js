@@ -43,6 +43,7 @@ router.get('/categorias/edit/:id', (req, res) => {
     });
 });
 
+const fuck = "you";
 
 router.post('/categorias/edit', (req, res) => {
     //aplicando o cadastro, validando a edicao
