@@ -7,20 +7,20 @@
 
 <div class="card m-3">
     <div class="card-body">
-        <form action="/admin/categorias/edit" method="POST">
+        <form action="/admin/postagens/edit" method="POST">
             <div class="d-inline-flex p-2 bd-highlight">
-                <h2 class="">BEM VINDO A ABA DE EDIÇÃO DE CADASTRO DE USUARIOS</h2>
+                <h2 class="">Editar postagem: </h2>
             </div>
 
             <div class="form-row mt-4">
                 <div class="col">
-                    <input type="hidden" name="id" value="{{categoria._id}}">
+                    <input type="hidden" name="id" value="{{postagem._id}}">
                     <input type="text" name="nome" class="form-control" placeholder="Nome..."
-                        value="{{categoria.nome}}">
+                        value="{{postagem.nome}}">
                 </div>
                 <div class="col">
                     <input type="text" name="sobrenome" class="form-control" placeholder="Sobrenome..."
-                        value="{{categoria.sobrenome}}">
+                        value="{{postagem.sobrenome}}">
                 </div>
             </div>
 
@@ -28,9 +28,17 @@
                 <label for="textArea" class="mt-4">Diga-me sua opinião: </label>
                 <textarea class="form-control" name="feedback" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn btn-success mt-3">Editar dados</button>
-            <a href="/admin/categorias" <button type="button" class="btn btn-info mt-3">Voltar a página inicial
-                </button></a>
+
+            <label for="categoria">Cadastro: </label>
+            <select name="categoria" class="custom-select">
+                {{#each categorias}}
+                <option value="{{_id}}">{{nome}} {{sobrenome}}</option>
+                {{else}}
+                <option value="0">Nenhum cadastro registrado</option>
+                {{/each}}
+            </select>
+
+            <button type="submit" class="btn btn-success mt-3">Salvar Edicao</button>
         </form>
     </div>
 </div>

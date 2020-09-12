@@ -3,7 +3,6 @@ const handlebars = require('express-handlebars');
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
-const PORT = 3333;
 const admin = require('./routes/admin');
 const path = require('path');
 const session = require('express-session');
@@ -63,6 +62,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/admin', admin);
 
 //outros...
+const PORT = process.env.PORT || 3333;
+
 app.listen(PORT, () => {
-    console.log(`Server listening on port http://localhost:3333`);
+    console.log(`Server listening on port http://localhost:3333/admin/home`);
 });
