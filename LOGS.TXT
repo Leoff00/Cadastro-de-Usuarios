@@ -1,0 +1,41 @@
+[33mcommit 378882cd7497606a4625e6939e5c1e99df71fda7[m[33m ([m[1;36mHEAD -> [m[1;32malter[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Leoff00 <leof0180@gmail.com>
+Date:   Sat Sep 12 23:42:20 2020 -0300
+
+    adding read-me
+
+[33mcommit 46bc8cbe29b64ce76baa93a91cc1a7060706d66c[m[33m ([m[1;31mheroku/master[m[33m)[m
+Author: Leoff00 <leof0180@gmail.com>
+Date:   Sat Sep 12 12:34:52 2020 -0300
+
+    initial commit
+
+[33mcommit 12348e4cf3f801455f9f553624e965003c6971dd[m
+Author: Leoff00 <leof0180@gmail.com>
+Date:   Tue Sep 1 18:56:54 2020 -0300
+
+    commitando e adicionando
+
+[33mcommit f22bd798c367235fdaceb9b9983ed789916fb5f9[m
+Author: Leoff00 <leof0180@gmail.com>
+Date:   Tue Sep 1 18:45:27 2020 -0300
+
+    deletada a pasta cadastro
+
+[33mcommit 350f8dc9005d2046c361463298c8b11ba167d4ba[m
+Author: Leoff00 <leof0180@gmail.com>
+Date:   Tue Sep 1 18:43:32 2020 -0300
+
+    leve modificacao
+
+[33mcommit 0dbb6271ad5208c39e0c1830390c9f6c703fa17c[m
+Author: Leoff00 <leof0180@gmail.com>
+Date:   Tue Sep 1 18:37:58 2020 -0300
+
+    parte logica parcialmente feita e front-end parcialmente concluido
+
+[33mcommit ee6cea01cd489219ca8a40d59d732dc23230d8cd[m
+Author: Leoff00 <leof0180@gmail.com>
+Date:   Tue Sep 1 16:34:53 2020 -0300
+
+    alparte parcialmente finalizada, terminando front-end
