@@ -14,6 +14,7 @@ const Postagem = mongoose.model('postagens');
 const usuario = require('./routes/usuario');
 const passport = require('passport')
 require('./config/auth')(passport)
+const db = require('./config/db')
 const {eAdmin} = require('./helpers/passAdmin')
 //configurando express session 
 
@@ -41,11 +42,13 @@ app.use((req, res, next) => {
 })
 
 //usando config do mongoose para redes diferentes
+
+
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
 //conectando ao mongoose
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/blogApp').then(() => {
+mongoose.connect(db.mongoURI).then(() => {
     console.log('Conectado ao banco de dados com sucesso!!!');
 }).catch((err) => {
     console.log('Nao foi possivel se conectar ao banco de dados' + err);
