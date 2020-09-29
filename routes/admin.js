@@ -12,7 +12,7 @@ e fazer uso da tabela(model) */
 //Todas as rotas do codigo...
 
 
-router.get('/categorias', eAdmin, (req, res) => {
+router.get('/categorias', (req, res) => {
     Categoria.find().then((categorias) => {
         res.render('./admin/categorias', {
             categorias: categorias.map(Categoria => Categoria.toJSON())
