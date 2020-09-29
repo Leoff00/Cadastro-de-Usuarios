@@ -1,14 +1,25 @@
 <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link active" href="/admin/home">Home</a>
+    <a class="nav-link " href="/">Home</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/admin/categorias">Cadastro</a>
+    <a class="nav-link" href="/admin/categorias">Comentários...</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/admin/postagens">Postagens</a>
   </li>
+
+  {{#if user}}
+    <li class="nav-item">
+    <a class="nav-link" href="/usuario/logout">Logout...</a>
+     </li>
+
+  {{else}}
   <li class="nav-item">
-    <a class="nav-link disabled">Em breve...</a>
+    <a class="nav-link" href="/usuario/login">Login...</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/usuario/cadastro">Cadastro de Usuarios</a>
+  </li>
+  {{/if}}
 </ul>

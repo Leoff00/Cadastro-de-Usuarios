@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const { eAdmin } = require('../helpers/passAdmin');
 const router = express.Router();
 require('../models/Categoria'); //importando o codigo da pasta model
 const Categoria = mongoose.model('categorias');
@@ -10,11 +11,8 @@ e fazer uso da tabela(model) */
 
 //Todas as rotas do codigo...
 
-router.get('/home', (req, res) => {
-    res.render('admin/home');
-});
 
-router.get('/categorias', (req, res) => {
+router.get('/categorias', eAdmin, (req, res) => {
     Categoria.find().then((categorias) => {
         res.render('./admin/categorias', {
             categorias: categorias.map(Categoria => Categoria.toJSON())
@@ -178,9 +176,9 @@ router.post('/categorias/new', (req, res) => {
 
 // rota de postagem
 
-router.get('/postagens', (req, res) => {
+router.get('/postagens', eAdmin, (req, res) => {
     Postagem.find().lean().populate("categoria").sort({
-        data: "desc"
+        data: -1
     }).then((postagens) => {
         res.render("admin/postagens", {
             postagens: postagens
