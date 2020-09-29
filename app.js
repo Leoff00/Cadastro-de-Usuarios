@@ -1,4 +1,5 @@
 const express = require('express');
+const MongoClient = require('mongodb').MongoClient;
 const handlebars = require('express-handlebars');
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
@@ -43,6 +44,14 @@ app.use((req, res, next) => {
 
 //usando config do mongoose para redes diferentes
 
+const uri = "mongodb+srv://Leonardoferreira:sk8forever@cad1.xztca.mongodb.net/CrudApp?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+    console.log(err);
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
