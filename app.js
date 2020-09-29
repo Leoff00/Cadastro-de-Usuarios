@@ -1,6 +1,4 @@
 const express = require('express');
-const connectDB = require('./config/connect')
-const MongoClient = require('mongodb').MongoClient;
 const handlebars = require('express-handlebars');
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
@@ -17,7 +15,9 @@ const usuario = require('./routes/usuario');
 const passport = require('passport')
 require('./config/auth')(passport)
 const db = require('./config/db')
-const {eAdmin} = require('./helpers/passAdmin')
+const {
+    eAdmin
+} = require('./helpers/passAdmin')
 //configurando express session 
 
 app.use(session({
