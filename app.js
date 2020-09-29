@@ -51,8 +51,6 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
 //conectando ao mongoose
 mongoose.Promise = global.Promise;
-
-
 mongoose.connect(db.mongoURI).then(() => {
     console.log('Conectado ao banco de dados com sucesso!!!');
 }).catch((err) => {
