@@ -2,12 +2,16 @@
   <h1 class="display-4">Bem vindo ao site de cadastro de usuarios</h1>
   <p class="lead">Tecnologias utilizadas: Bootstrap, Express.JS, MongoDB, Node.JS.</p>
   <hr class="my-4">
+  {{#if nUser}}
   <a class="btn btn-info btn-lg" href="/cadastro" role="button">Cadastre-se aqui!</a>
+  {{else}}
+  {{/if}}
 </div>
 
 <hr>
 <h4>Postagens recentes</h4>
 <hr>
+
 
 {{#each postagens}}
 
