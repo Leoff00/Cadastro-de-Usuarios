@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 require('../models/usuario');
 require('../models/Postagem')
-require('../models/posts')
 require('../models/Categoria')
 const Categoria = mongoose.model('categorias') //reaproveitando a model categoria
 const Usuario = mongoose.model('usuarios');

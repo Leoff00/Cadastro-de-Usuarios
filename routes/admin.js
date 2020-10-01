@@ -14,7 +14,7 @@ e fazer uso da tabela(model) */
 //Todas as rotas do codigo...
 
 
-router.get('/categorias', (req, res) => {
+router.get('/categorias', eAdmin, (req, res) => {
     Categoria.find().then((categorias) => {
         res.render('./admin/categorias', {
             categorias: categorias.map(Categoria => Categoria.toJSON())
@@ -46,7 +46,7 @@ router.get('/categorias/edit/:id', (req, res) => {
 });
 
 
-router.post('/categorias/edit', (req, res) => {
+router.post('/categorias/edit', eAdmin ,(req, res) => {
     //aplicando o cadastro, validando a edicao
 
     let erro = [];
@@ -101,7 +101,7 @@ router.post('/categorias/edit', (req, res) => {
 
 //deletar
 
-router.post('/categorias/del', (req, res) => {
+router.post('/categorias/del', eAdmin, (req, res) => {
     Categoria.deleteOne({
         _id: req.body.id
     }).lean().then(() => {
@@ -178,7 +178,7 @@ router.post('/categorias/new', (req, res) => {
 
 // rota de postagem
 
-router.get('/postagens', (req, res) => {
+router.get('/postagens', eAdmin, (req, res) => {
     Postagem.find().lean().populate("categoria").sort({
         data: -1
     }).then((postagens) => {
