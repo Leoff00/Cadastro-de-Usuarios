@@ -1,0 +1,31 @@
+{{#each erro}}
+<div class="alert alert-danger">{{text}}</div>
+
+{{else}}
+
+{{/each}}
+<div class="card m-3">
+    <div class="card-body">
+        <form action="/usuario/postar" method="POST">
+            <div class="d-inline-flex p-2 bd-highlight">
+                <h2 class="">BEM VINDO A ABA DE POSTAGEM</h2>
+            </div>
+
+            <div class="form-row mt-4">
+                <div class="col">
+                    <input type="text" name="nome" class="form-control" placeholder="Nome..." required>
+                </div>
+                <div class="col">
+                    <input type="text" name="sobrenome" class="form-control" placeholder="Sobrenome..." required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="textArea" class="mt-4">Diga-me sua opinião: </label>
+                <textarea class="form-control" name="feedback" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success mt-2">Postar!</button>
+            <a href="/" <button type="button" class="btn btn-info mt-2">Voltar a página principal
+                </button></a>
+        </form>
+    </div>
+</div>
