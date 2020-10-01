@@ -4,7 +4,26 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 require('../models/usuario');
+require('../models/Postagem')
+require('../models/posts')
+require('../models/Categoria')
+const Categoria = mongoose.model('categorias') //reaproveitando a model categoria
 const Usuario = mongoose.model('usuarios');
+
+//user rotes
+
+router.get('/', (req, res) => {
+    Categoria.find()
+        .then((categoria) => {
+            res.render("./usuario/index", {
+                categoria: categoria.map(categoria => categoria.toJSON())
+            })
+        }).catch((err) => {
+            req.flash("error_msg", "Houve um erro ao listar as postagens" + err)
+            res.redirect("/")
+        });
+});
+
 
 router.get('/cadastro', (req, res) => {
     res.render('usuario/cadastro');
@@ -102,15 +121,15 @@ router.post('/cadastro', (req, res) => {
     }
 });
 
-router.get('/login', (req, res) => { 
+router.get('/login', (req, res) => {
     res.render("usuario/login");
 })
 
-router.post('/login', (req, res, next) => { 
+router.post('/login', (req, res, next) => {
     passport.authenticate("local", {
         successRedirect: "/",
         failureRedirect: "/usuario/login",
-        failureFlash: true, 
+        failureFlash: true,
 
     })(req, res, next)
 })
@@ -121,5 +140,60 @@ router.get('/logout', (req, res) => {
     req.flash("success_msg", "Deslogado com sucesso")
     res.redirect('/')
 })
+
+router.get('/postar', (req, res) => {
+    res.render('usuario/postar')
+})
+
+router.post('/postar', (req, res) => {
+
+    let erro = [];
+
+    if (!req.body.nome || typeof req.body.nome == undefined || req.body.nome == null) {
+        erro.push({
+            text: "Nome inválido!"
+        });
+    }
+
+
+    if (!req.body.nome || typeof req.body.sobrenome == undefined || req.body.sobrenome == null) {
+        erro.push({
+            text: "Sobrenome inválido!"
+        });
+    }
+
+
+    if (!req.body.feedback || typeof req.body.feedback == undefined || req.body.nome == null) {
+        erro.push({
+            text: "Por favor, preencha o feedback corretamente!"
+        });
+    }
+
+
+    if (erro.length > 0) {
+        res.render('usuario/postar', {
+            erro: erro
+        });
+
+    } else {
+        const novoPost = {
+            nome: req.body.nome,
+            sobrenome: req.body.sobrenome,
+            feedback: req.body.feedback
+        };
+
+        new Categoria(novoPost).save().then(() => {
+            req.flash("success_msg", "Postagem registrada com sucesso! :)");
+            res.redirect('/');
+        }).catch((err) => {
+            req.flash("error_msg", "Nao foi possivel registrar postagem :(" + err);
+            res.redirect('/usuario/postar');
+        });
+
+    };
+})
+
+
+
 
 module.exports = router;

@@ -12,7 +12,7 @@ const Postagem = new Schema({
         required: true
     },
 
-    feedback: { 
+    feedback: {
         type: String,
         required: false,
 

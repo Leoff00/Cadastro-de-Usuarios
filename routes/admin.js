@@ -1,8 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const { eAdmin } = require('../helpers/passAdmin');
+const {
+    eAdmin
+} = require('../helpers/passAdmin');
 const router = express.Router();
-require('../models/Categoria'); //importando o codigo da pasta model
+require('../models/Categoria');
 const Categoria = mongoose.model('categorias');
 require('../models/Postagem');
 const Postagem = mongoose.model('postagens');
@@ -17,9 +19,9 @@ router.get('/categorias', (req, res) => {
         res.render('./admin/categorias', {
             categorias: categorias.map(Categoria => Categoria.toJSON())
         });
-    }).catch((error) => {
-        console.log('houve um erro ao listar as categorias ' + erro);
-        res.redirect('/admin/home');
+    }).catch((err) => {
+        console.log('houve um erro ao listar as categorias ' + err);
+        res.redirect('./admin/categorias');
     });
 });
 
@@ -176,7 +178,7 @@ router.post('/categorias/new', (req, res) => {
 
 // rota de postagem
 
-router.get('/postagens', eAdmin, (req, res) => {
+router.get('/postagens', (req, res) => {
     Postagem.find().lean().populate("categoria").sort({
         data: -1
     }).then((postagens) => {
@@ -272,33 +274,37 @@ router.get('/postagens/edit/:id', (req, res) => {
 
 //aplicando edicao
 
-router.post("/postagens/edit", (req,res) => {
-    Postagem.findOne({_id: req.body.id}).then((postagem)=> {
-            
+router.post("/postagens/edit", (req, res) => {
+    Postagem.findOne({
+        _id: req.body.id
+    }).then((postagem) => {
+
         postagem.nome = req.body.nome
-        postagem.sobrenome = req.body.sobrenome 
-        postagem.feedback = req.body.feedback 
-      
-        
+        postagem.sobrenome = req.body.sobrenome
+        postagem.feedback = req.body.feedback
+
+
         postagem.save().then(() => {
             req.flash('success_msg', 'Postagem editada com sucesso!');
             res.redirect('/admin/postagens');
-           }).catch((err) => {
+        }).catch((err) => {
             console.log(err)
-            req.flash('error_msg', 'Houve um erro ao salvar edição' +err);
+            req.flash('error_msg', 'Houve um erro ao salvar edição' + err);
             res.redirect('/admin/postagens');
 
 
-                }).catch((err) => {
-                    console.log(err)
-                    req.flash("error_msg","Houve um erro ao salvar edição")
-                    res.redirect("/admin/postagens");
-                });
-      });
+        }).catch((err) => {
+            console.log(err)
+            req.flash("error_msg", "Houve um erro ao salvar edição")
+            res.redirect("/admin/postagens");
+        });
+    });
 });
 
 router.get('/postagens/deletar/:id', (req, res) => {
-    Postagem.deleteOne({_id: req.params.id}).then( () => {
+    Postagem.deleteOne({
+        _id: req.params.id
+    }).then(() => {
         req.flash("success_msg", "Postagem deletada com sucesso");
         res.redirect('/admin/postagens');
     }).catch((err) => {
