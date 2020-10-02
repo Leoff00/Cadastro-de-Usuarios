@@ -6,7 +6,7 @@ const passport = require('passport');
 require('../models/usuario');
 require('../models/Postagem')
 require('../models/Categoria')
-const Categoria = mongoose.model('categorias') //reaproveitando a model categoria
+const Categoria = mongoose.model('categorias') 
 const Usuario = mongoose.model('usuarios');
 
 //user rotes
